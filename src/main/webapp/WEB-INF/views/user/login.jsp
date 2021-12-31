@@ -16,24 +16,25 @@
 <title>login page</title>
 </head>
 <body>
-<div class="body_wrapper">
+<div class="user_container">
 	<c:url value="/user" var="userUrl"></c:url>
 	<tag:nav></tag:nav>
-	<div class="main_container">
-		<div class="login_main_box">
-			<div class="login_main_wrapper">
-	            <span>login</span>
-				<form method="post" action="${userUrl }/login" class="login_main_form">
-					<input type="text" name="email" class="login_input_id" placeholder="email"/>
-					<input type="text" name="password" class="login_input_pw" placeholder="password"/>
-					<input type="submit" class="login_input_submit" value="LogIn"/>
-				</form>
-			</div>
+	<div class="login_main_box">
+		<div class="login_main_wrapper">
+            <span>login</span>
+			<form method="post" action="${userUrl }/login" class="login_main_form">
+				<input type="text" name="email" class="login_input_id" placeholder="email"/>
+				<input type="text" name="password" class="login_input_pw" placeholder="password"/>
+				<input type="submit" class="login_input_submit" value="LogIn"/>
+			</form>
 		</div>
 	</div>
 	<tag:footer></tag:footer>
-	<tag:menu></tag:menu>
 </div>
-<script src="${pageContext.request.contextPath }/resource/js/main.js" type="module"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 </body>
 </html>

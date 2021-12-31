@@ -1,34 +1,22 @@
 const updateBtn = document.querySelector(".user_edit_updateBtn");
 const deleteBtn = document.querySelector(".user_edit_deleteBtn");
-const submitBtn = document.querySelector(".user_edit_submitBtn");
 const emailCheckBtn = document.querySelector(".edit_email_check");
 const emailInput = document.querySelector("#user_edit_input2");
-const passwordInput = document.querySelector(".user_edit_password");
-const passwordCheckInput = document.querySelector(".user_edit_password_check");
-
 const contextPathInfoElem = document.querySelector(".contextPath");
-const firstEamilValueElem = document.querySelector(".firstEamilValue");
-const firstPasswordValueElem = document.querySelector(".firstPasswordValue");
-
 const hiddenForm = document.querySelector(".user_edit_hidden_form");
+const firstEamilValueElem = document.querySelector(".firstEamilValue");
 const emailAlertMessage = document.querySelector(".edit_email_message");
 const form = document.querySelector(".user_edit_form");
 let contextPathInfo 
-
 let firstEamilValue 
-let currentInputValue
-
-let firstPwValue
-
 let httpRequest
 
 let canUseEamil = true;
-let canUsePassword = true;
 
 const changeFormActionPathAndSubmit = (path) =>{
 	console.log(`${path} is work`)
 	form.action = contextPathInfo+path;
-	submitBtn.click();
+	form.submit();
 }
 
 const updateHandler = (e) =>{
@@ -42,24 +30,22 @@ const deleteHandler = (e) =>{
 }
 
 const emailValueCheckHandler = (e) =>{
+	emailCheckBtn.value="again"
 	canUseEamil = false;
+	deleteBtn.disabled = true;
+	let currentInputValue = e.target.value;
 	emailCheckBtn.addEventListener("click",makeRequest);
 	checkCanPushSubmitBtn();
-	const currentInputValue = e.target.value;
 	if(currentInputValue == firstEamilValue){
 		emailCheckBtn.removeEventListener("click",makeRequest);
+		deleteBtn.disabled = false;
 		updateBtn.disabled = true;
 		canUseEamil = true;
 	}
 }
 
 const checkCanPushSubmitBtn = () =>{
-	const ok1 = passwordInput.value == firstPwValue; 	
-	const ok2 = emailInput.value == firstEamilValue;
-	const isPwSame = ok1&&ok2
-	console.log("5")
-	console.log(isPwSame);
-	if(canUseEamil&&canUsePassword&&!isPwSame){
+	if(canUseEamil){
 		updateBtn.disabled = false;
 	}else{
 		updateBtn.disabled = true;
@@ -67,6 +53,7 @@ const checkCanPushSubmitBtn = () =>{
 }
 
 function makeRequest() {
+	
     httpRequest = new XMLHttpRequest();
 	let data ={
 		email : emailInput.value
@@ -89,6 +76,7 @@ function alertContents() {
 		const message = httpRequest.responseText
 		if(message == 'able'){
 			emailAlertMessage.innerText = "사용가능한 이메일 입니다."
+			/*emailCheckBtn.value="again"*/
 			canUseEamil = true;
 			checkCanPushSubmitBtn();
 		}else{
@@ -100,30 +88,10 @@ function alertContents() {
     }
   }
 
-const passwordCheckHandler = () =>{
-	let pw1Value = passwordInput.value;
-	let pw2Value = passwordCheckInput.value;
-	if(pw1Value == firstPwValue){
-		console.log("1")
-		canUsePassword= true;
-	}else{
-		console.log("2")
-		canUsePassword= false;
-	}
-	console.log("3")
-	if(pw1Value == pw2Value){
-		console.log("4")
-		canUsePassword = true;
-	}
-	checkCanPushSubmitBtn();
-}
-
 const init = () =>{
 	updateBtn.addEventListener("click",updateHandler);
 	deleteBtn.addEventListener("click",deleteHandler);
 	emailInput.addEventListener("input",emailValueCheckHandler);
-	passwordInput.addEventListener("input",passwordCheckHandler);
-	passwordCheckInput.addEventListener("input",passwordCheckHandler);
 }
 
 /*window.onload = () =>{
@@ -135,8 +103,6 @@ if(updateBtn!=null){
 	console.log("edit.js file work")
 	contextPathInfo = contextPathInfoElem.value;
 	firstEamilValue = firstEamilValueElem.value;
-	firstPwValue = firstPasswordValueElem.value;
-	
 	init();	
-	setInterval(()=>console.log(canUseEamil,canUsePassword),1000)
+	/*setInterval(()=>console.log(canUseEamil),1000)*/
 }
