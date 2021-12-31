@@ -11,10 +11,4 @@ public class ResellPageInfoVO {
 	private Integer rightPageNumber;	// 페이지네이션 가장 오른쪽 번호
 	private Boolean hasPrevButton;		// 이전 페이지 버튼 유무
 	private Boolean hasNextButton;		// 다음 페이지 버튼 유뮤
-	
-	private int pagerNum;
-	private int amount;
-	
-	// 검색
-	
 }

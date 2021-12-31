@@ -21,8 +21,6 @@ public class ResellMemberVO {
 		private LocalDateTime inserted;
 		private String nickName;
 		
-		
-		
 		public String getCustomInserted() {
 			//현재 일시
 			LocalDateTime now = LocalDateTime.now(ZoneId.of("+09:00"));
@@ -39,19 +37,4 @@ public class ResellMemberVO {
 				return inserted.format(dateTimeFormatter);
 			}
 		}	
-		
-
-		
-		
-		
-		
 }
-
-
-
-
-
-
-
-
-

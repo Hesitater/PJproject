@@ -28,8 +28,6 @@ public interface ResellBoardMapper {
 
 	public Integer getCountRows();
 
-	public List<ResellBoardVO> selectSearchList(ResellBoardVO boardVo);
-
 
 
 }

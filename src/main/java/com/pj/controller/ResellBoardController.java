@@ -130,8 +130,7 @@ public class ResellBoardController implements WebMvcConfigurer {
 		
 		return "redirect:/resellMarket/resellBoard/resellBoardList";
 	}
-	
-	// 검색내
+
 	@RequestMapping(value = "/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
@@ -172,36 +171,10 @@ public class ResellBoardController implements WebMvcConfigurer {
 		String a = jsonObject.toString();
 		return a;
 	}
-/*
-	@GetMapping("/resellGetSearchList")
-	@ResponseBody
-	private List<ResellBoardVO> getSearchList(@RequestParam("type") String type,
-			@RequestParam("keyword") String keyword, Model model) throws Exception {
-		
-		ResellBoardVO boardVo = new ResellBoardVO();
-		boardVo.setType(type);
-		boardVo.setKeyword(keyword);
-		
-		return service.getSearchList(boardVo);
-	}
- */
+	
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
